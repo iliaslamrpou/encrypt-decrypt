@@ -16,12 +16,12 @@ File:**teliasED_sender.exe** :
 
 The file should be in the same folder with the public key.<br/>
 It accepts a parameter that is the name of the public key file<br/>
-##	teliasED_sender <publicKeyFilename><br/>
+**	teliasED_sender <publicKeyFilename>**<br/>
 Without the parameter the code will try to read the key from the file named public.pem.<br/>
 The sender's key can be predefined by the code or read from the disk.<br/>
 After executing the code, two files will be created:<br/>
-*rsaOut.txt*: Contains the sender's key encrypted<br/>
-*aesOut.txt*: Contains the HMAC-SHA256 of the rsaOut.txt file encrypted with AES.<br/>
+**rsaOut.txt**: Contains the sender's key encrypted<br/>
+**aesOut.txt**: Contains the HMAC-SHA256 of the rsaOut.txt file encrypted with AES.<br/>
 The above two files will be sent to the recipient for decryption.<br/>
 Below we see the files that are created as a result of executing the code in a Linux environment (CygWin64)<br/>
 
