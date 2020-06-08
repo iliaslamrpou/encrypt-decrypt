@@ -1,12 +1,12 @@
-# RSA & AES encrypt/decrypt (OpenSSL)
+# RSA & AES encrypt/decrypt example code (OpenSSL)
 
-This repository contains c++ code for LINUX environment about the encryption and decryption using the OpenSSL libs <br/>
-For all of the tools the C++ code is included on this repository<br/>
+This repository contains c++ code for LINUX environment about encryption and decryption using the OpenSSL libs <br/>
+For all of the tools the C++ code is included in this repository<br/>
 
 
 **teliasED_sender.c** : The c++ code for the sender<br/>
 **teliasED_receiver.c** : The c++ code for the receiver<br/>
-**teliasED.c** : A c++ code that contains both codes and simulate the sendr and the receiver on the same code<br/>
+**teliasED.c** : A c++ code that contains both codes and simulates the sender and the receiver on the same code<br/>
 
 
 ## Instructions:
@@ -35,7 +35,7 @@ The code reads the three files and compares the results.
 Finally, it sends a confirmation or failure message.
 In case the key has not been altered, it saves it with the name sender.key.
 
-All of these files has to be to the same folder<br/>
+All of these files have to be in the same folder<br/>
 
 
 ## Required hardware and software:
@@ -45,7 +45,7 @@ Ram: 2Gb<br/>
 
 ## Licence: 
 This code is created by **Ilias Lamprou** & **Telis Zacharis**<br/><br/>
-You can use this code for educational use<br/>
+You can use this code for educational purposes<br/>
 
 
 `Jun 8 2020`
