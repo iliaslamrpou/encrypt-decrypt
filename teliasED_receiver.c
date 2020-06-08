@@ -1,9 +1,10 @@
-//=======================================================
-//			       ENCRYPT - DECRYPT RSA
-//	Copyright (c) 2020 by Ilias Lamprou & Telis Zacharis
-//				    All rights reserved
-//========================================================
-/* 
+/* =======================================================
+			       ENCRYPT - DECRYPT RSA
+	Copyright (c) 2020 by Ilias Lamprou & Telis Zacharis
+				    All rights reserved
+     GitHub: https://github.com/iliaslamrpou/encrypt-decrypt
+  ========================================================
+
 	Πριν τρέξετε αυτόν τον κώδικα τοποθετήστε στον ίδιο φάκελλο το ιδιωτικό 
 	κλειδί τo οποίo θα πρέπει να έχει το όνομα private.key 
 	
@@ -29,7 +30,27 @@
 #include <string.h>
 #define KEY_LENGTH 8182//768 
 
+
+#include <fstream>
+//#include <streambuf>
+#include <sstream>
+  
+ 
+
 //======================================================== loadFile
+// Διαβάζει ένα αρχείο από δλισκο και επιστρέφει έναn pointer σε char arrray
+// Χρησιμοποιείται για την ανάγνωση των αρχείων που στέλνει ο αποστολέας 
+// καθώς και για την ανάγνωση του κλειδιού του αποστολέα όταν δεν επιθυμούμε να 
+// οριστεί από τον κώδικα
+
+unsigned char* readFile2(char* filename){   // bug fixes
+
+	std::ifstream t(filename);
+	std::stringstream buffer;
+	buffer << t.rdbuf();
+    return (unsigned char*) buffer.str().c_str();
+}
+//------------------------------------
   unsigned char* readFile(char* filename){
   FILE* f = fopen(filename, "r");
    fseek(f, 0, SEEK_END);
@@ -43,6 +64,8 @@
 }
 
 //======================================================== printRSA
+// Εκτυπώνει ένα κλειδί το οποίο είναι σε μορφή RSA
+
 void printRSA(RSA * rsa, int pri_bub){
 	int len=8192;
     BIO *bio = BIO_new(BIO_s_mem());
@@ -56,6 +79,9 @@ void printRSA(RSA * rsa, int pri_bub){
 }
 
 //======================================================== sha256
+// Κάνει hash το κείμενο data χρησιμοποιώντας το κλειδί key
+// και επιστρέφει το αποτέλεσμα
+
  unsigned char * getHMAC(unsigned char *key,unsigned char *data , int dataSize){
   unsigned char *result;
   int i;
@@ -153,7 +179,7 @@ int main(int arc, char *argv[]) {
 	 
 	 // Διαβάζουμε από το δίσκο το κρυπτογραφημένο μήνυμα (κλειδί) που μας έχει σταλεί
      unsigned char * encryptedMsg = readFile((char*) "rsaOut.text"); 
-	 printf(".loaded encrypted key=\n%s\n",(unsigned char*) encryptedMsg);
+	 //printf(".loaded encrypted key=\n%s\n",(unsigned char*) encryptedMsg);
 	 int encryptedMsgLen = strlen((char*)encryptedMsg);
 	 printf("/nencryptLen=%d\n", encryptedMsgLen);                   // εκτυπώνουμε το κρυπτογραφημένο κλειδί
  	 BIO_dump_fp(stdout, (const char *)encryptedMsg, encryptedMsgLen);
@@ -184,18 +210,20 @@ int main(int arc, char *argv[]) {
 	 printf("hmacText2 is:\n");
 	 BIO_dump_fp(stdout, (const char *)hmacText2, hmacText_len2);		
 	
-	printf("\n\n------------------- Παραλήπτης AES decrypt ------------------");
+	 printf("\n\n------------------- Παραλήπτης AES decrypt ------------------");
 	 // Διαβάζουμε από το δίσκο το κρυπτογραφημένο μήνυμα (κλειδί) που μας έχει σταλεί
-     unsigned char * aes_encryptedMsg = readFile((char*) "aesOut.text"); 
-	 printf(".loaded aes_encrypted key=\n%s\n",(unsigned char*) aes_encryptedMsg);
+     unsigned char * aes_encryptedMsg = readFile2((char*) "aesOut.text"); 
+	// printf("\nloaded aes_encrypted key=\n%s\n",(unsigned char*) aes_encryptedMsg);
 	 int aes_encryptedMsgLen = strlen((char*)aes_encryptedMsg);
-	 printf("\aes_encryptLen=%d\n", aes_encryptedMsgLen);                   // εκτυπώνουμε το κρυπτογραφημένο κλειδί
+	 printf("\naes_encryptLen=%d\n", aes_encryptedMsgLen);                   // εκτυπώνουμε το κρυπτογραφημένο κλειδί
  	 BIO_dump_fp(stdout, (const char *)aes_encryptedMsg, aes_encryptedMsgLen);
 
-    char* aesDecryptedText = (char*) malloc(1024); 
-    int aesDecryptedText_len= decryptAES((unsigned char*)aes_encryptedMsg, aes_encryptedMsgLen,(unsigned char *)decrypt,(unsigned char *)aesDecryptedText);
-    printf("\naesDecryptedText_len=%d\n", aesDecryptedText_len);                   // εκτυπώνουμε το κρυπτογραφημένο κλειδί
- 	BIO_dump_fp(stdout, (const char *)aesDecryptedText, aesDecryptedText_len);
+     //unsigned char* aesDecryptedText = new unsigned  char[1024];
+      char* aesDecryptedText = (char*) malloc(1024); 
+	 
+     int aesDecryptedText_len= decryptAES((unsigned char*)aes_encryptedMsg, aes_encryptedMsgLen,(unsigned char *)decrypt,(unsigned char *)aesDecryptedText);
+     printf("\naesDecryptedText_len=%d\n", aesDecryptedText_len);                   // εκτυπώνουμε το κρυπτογραφημένο κλειδί
+ 	 BIO_dump_fp(stdout, (const char *)aesDecryptedText, aesDecryptedText_len);
 	
 	
 	if(strncmp((char*) aesDecryptedText,(char*) hmacText2, aesDecryptedText_len ) == 0 ) {
@@ -214,6 +242,7 @@ int main(int arc, char *argv[]) {
 	RSA_free(rsaPrivate);
     free(decrypt);
     free(err);
+	free(aesDecryptedText);
    
     return 0;
 }

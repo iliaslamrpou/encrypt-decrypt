@@ -1,9 +1,10 @@
-//=======================================================
-//			       ENCRYPT - DECRYPT RSA
-//	Copyright (c) 2020 by Ilias Lamprou & Telis Zacharis
-//				    All rights reserved
-//========================================================
-/* 
+/* =======================================================
+			       ENCRYPT - DECRYPT RSA
+	Copyright (c) 2020 by Ilias Lamprou & Telis Zacharis
+				    All rights reserved
+     GitHub: https://github.com/iliaslamrpou/encrypt-decrypt
+  ========================================================
+
 	Πριν τρέξετε αυτόν τον κώδικα τοποθετήστε στον ίδιο φάκελλο το δημόσιο 
 	το οποίο θα πρέπει να έχει το όνομα private.key 
 	
@@ -28,6 +29,11 @@
 #define KEY_LENGTH 8182//768 
 
 //======================================================== loadFile
+// Διαβάζει ένα αρχείο από δλισκο και επιστρέφει έναn pointer σε char arrray
+// Χρησιμοποιείται για την ανάγνωση των αρχείων που στέλνει ο αποστολέας 
+// καθώς και για την ανάγνωση του κλειδιού του αποστολέα όταν δεν επιθυμούμε να 
+// οριστεί από τον κώδικα
+
   unsigned char* readFile(char* filename){
   FILE* f = fopen(filename, "r");
    fseek(f, 0, SEEK_END);
@@ -40,6 +46,8 @@
 }
 
 //======================================================== printRSA
+// Εκτυπώνει ένα κλειδί το οποίο είναι σε μορφή RSA
+
 void printRSA(RSA * rsa, int pri_bub){
 	int len=8192;
     BIO *bio = BIO_new(BIO_s_mem());
@@ -53,6 +61,9 @@ void printRSA(RSA * rsa, int pri_bub){
 }
 
 //======================================================== sha256
+// Κάνει hash το κείμενο data χρησιμοποιώντας το κλειδί key
+// και επιστρέφει το αποτέλεσμα
+
  unsigned char * getHMAC(unsigned char *key,unsigned char *data , int dataSize){
   unsigned char *result;
   int i;
@@ -117,7 +128,7 @@ int main(int arc, char *argv[]) {
 	 printRSA(rsaPublic,0);
 	 
 	 // Διαβάζουμε το μήνυμα  που θέλουμε να κρυπτογραφήσουμε. Για την εργασία είναι το κλειδί key32
-     // Μπορούμε να το ορίσουμε και από τον κώδικα ενεργοποιώντας την απενεργοποιημένη γραμμή παρακάτω
+     // Μπορούμε να το ορίσουμε και από τον κώδικα όπως παρακάτω
 	 printf("\nReading key...\n");
 	 //unsigned char * msg = readFile((char*) "key32"); 
 	 static const unsigned char  msg[] ="12345678901234567890123456789012";
