@@ -4,22 +4,12 @@
 
 
 This repository contains c++ code for LINUX environment about the encryption and decryption using the OpenSSL libs <br/>
-For all the tools the C++ code is included on the repository<br/>
+For all of the tools the C++ code is included on this repository<br/>
 
 
-The ***generator folder*** contains all the necessary code to create a tools for the sender and the receiver of a message<br/>
- <br/>
-
-- **teliasED_sender**<br/>
-- **teliasED_receiver**<br/>
-- **teliasED**<br/>
-
-teliasED_sender.c : The c++ code for the sender
-teliasED_receiver.c : The c++ code for the receiver
-teliasED.c: A c++ code that contains both codes and simulate the sendr and the receiver on the same code
-
-The solution of each problem is stored in a file<br/>
-The solution of pack of problem is stored in a CSV file for generating statistics<br/>
+**teliasED_sender.c** : The c++ code for the sender
+**teliasED_receiver.c** : The c++ code for the receiver
+**teliasED.c** : A c++ code that contains both codes and simulate the sendr and the receiver on the same code
 
 Web Page: (https://iliaslamrpou.github.io/knapsack)
 
@@ -54,12 +44,13 @@ All of these files has to be to the same folder<br/>
 
 
 ## Required hardware and software:
-CPU: 64bit<br/>
-Windows 64bit<br/>
-Ram: 4Gb<br/>
+CPU: 32/64bit<br/>
+Linux<br/>
+Ram: 2Gb<br/>
 
-## Licence: This code is created by Ilias Lamprou
-You can use it for educational use<br/>
-Contuct us for commercial use<br/>
+## Licence: 
+This code is created by *Ilias Lamprou* & *Telis Zacharis(
+You can use this code for educational use<br/>
 
-`Jun 31 2019`
+
+`Jun 8 2020`
