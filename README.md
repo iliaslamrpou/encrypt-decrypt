@@ -4,26 +4,26 @@ This repository contains c++ code for LINUX environment about the encryption and
 For all of the tools the C++ code is included on this repository<br/>
 
 
-**teliasED_sender.c** : The c++ code for the sender
-**teliasED_receiver.c** : The c++ code for the receiver
-**teliasED.c** : A c++ code that contains both codes and simulate the sendr and the receiver on the same code
+**teliasED_sender.c** : The c++ code for the sender<br/>
+**teliasED_receiver.c** : The c++ code for the receiver<br/>
+**teliasED.c** : A c++ code that contains both codes and simulate the sendr and the receiver on the same code<br/>
 
-Web Page: (https://iliaslamrpou.github.io/knapsack)
+Web Page: (https://iliaslamrpou.github.io/knapsack)<br/>
 
 ## Instructions:
 
 File:**teliasED_sender.exe** :
 
-The file should be in the same folder with the public key.
-It accepts a parameter that is the name of the public key file
-##	teliasED_sender <publicKeyFilename>
-Without the parameter the code will try to read the key from the file named public.pem.
-The sender's key can be predefined by the code or read from the disk.
-After executing the code, two files will be created:
-*rsaOut.txt*: Contains the sender's key encrypted
-*aesOut.txt*: Contains the HMAC-SHA256 of the rsaOut.txt file encrypted with AES.
-The above two files will be sent to the recipient for decryption.
-Below we see the files that are created as a result of executing the code in a Linux environment (CygWin64)
+The file should be in the same folder with the public key.<br/>
+It accepts a parameter that is the name of the public key file<br/>
+##	teliasED_sender <publicKeyFilename><br/>
+Without the parameter the code will try to read the key from the file named public.pem.<br/>
+The sender's key can be predefined by the code or read from the disk.<br/>
+After executing the code, two files will be created:<br/>
+*rsaOut.txt*: Contains the sender's key encrypted<br/>
+*aesOut.txt*: Contains the HMAC-SHA256 of the rsaOut.txt file encrypted with AES.<br/>
+The above two files will be sent to the recipient for decryption.<br/>
+Below we see the files that are created as a result of executing the code in a Linux environment (CygWin64)<br/>
 
 File **teliasED_receiver.exe:**
 The recipient must have this file in the same folder with the private key as well as with the above two files rsaOut.txt and aesOut.txt that he will receive from the sender.
