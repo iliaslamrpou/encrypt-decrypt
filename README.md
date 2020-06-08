@@ -1,4 +1,4 @@
-# RSA & AES encrypt/decrypt
+# RSA & AES encrypt/decrypt (OpenSSL)
 
 This repository contains c++ code for LINUX environment about the encryption and decryption using the OpenSSL libs <br/>
 For all of the tools the C++ code is included on this repository<br/>
@@ -8,7 +8,6 @@ For all of the tools the C++ code is included on this repository<br/>
 **teliasED_receiver.c** : The c++ code for the receiver<br/>
 **teliasED.c** : A c++ code that contains both codes and simulate the sendr and the receiver on the same code<br/>
 
-Web Page: (https://iliaslamrpou.github.io/knapsack)<br/>
 
 ## Instructions:
 
