@@ -49,7 +49,7 @@ Linux<br/>
 Ram: 2Gb<br/>
 
 ## Licence: 
-This code is created by *Ilias Lamprou* & *Telis Zacharis(
+This code is created by **Ilias Lamprou** & **Telis Zacharis**
 You can use this code for educational use<br/>
 
 
