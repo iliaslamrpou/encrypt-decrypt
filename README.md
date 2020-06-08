@@ -1,7 +1,4 @@
-# encrypt-decrypt
-
 # RSA & AES encrypt/decrypt
-
 
 This repository contains c++ code for LINUX environment about the encryption and decryption using the OpenSSL libs <br/>
 For all of the tools the C++ code is included on this repository<br/>
@@ -15,11 +12,11 @@ Web Page: (https://iliaslamrpou.github.io/knapsack)
 
 ## Instructions:
 
-**File:teliasED_sender.exe** :
+File:**teliasED_sender.exe** :
 
 The file should be in the same folder with the public key.
 It accepts a parameter that is the name of the public key file
-#	teliasED_sender <publicKeyFilename>
+##	teliasED_sender <publicKeyFilename>
 Without the parameter the code will try to read the key from the file named public.pem.
 The sender's key can be predefined by the code or read from the disk.
 After executing the code, two files will be created:
@@ -28,8 +25,7 @@ After executing the code, two files will be created:
 The above two files will be sent to the recipient for decryption.
 Below we see the files that are created as a result of executing the code in a Linux environment (CygWin64)
 
-**File teliasED_receiver.exe:**
-
+File **teliasED_receiver.exe:**
 The recipient must have this file in the same folder with the private key as well as with the above two files rsaOut.txt and aesOut.txt that he will receive from the sender.
 It accepts a parameter that is the name of the private key file
 
@@ -49,7 +45,7 @@ Linux<br/>
 Ram: 2Gb<br/>
 
 ## Licence: 
-This code is created by **Ilias Lamprou** & **Telis Zacharis**
+This code is created by **Ilias Lamprou** & **Telis Zacharis**<br/><br/>
 You can use this code for educational use<br/>
 
 
